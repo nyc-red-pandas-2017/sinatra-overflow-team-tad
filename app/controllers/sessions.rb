@@ -7,7 +7,7 @@ post '/sessions' do
   if @user
     session[:user_id] = @user.id
     #need to redirect to a separate page
-    #redirect
+    redirect '/questions'
   else
     @error = "Invalid login, try again"
     erb :"sessions/new"
