@@ -1,0 +1,10 @@
+<h1>Questions</h1>
+
+<a id="new-question" method="post" action="/questions" href="/questions">New question</a>
+<br>
+<br>
+<ul>
+  <% @questions.each do |question| %>
+  <li><%= question.question_text %> | <a href="#">comment</a> | <a href="#">answer</a> | <%= question.created_at %> </li>
+  <% end %>
+</ul>
