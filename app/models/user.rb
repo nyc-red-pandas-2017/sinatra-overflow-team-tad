@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+
+  has_many :questions
+  has_many :votes, as: :votable
+  has_many :comments, as: :commentable
+  has_many :answers
+
   # Remember to create a migration!
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
@@ -17,4 +23,5 @@ class User < ApplicationRecord
     return user if user.password == plaintext_password
     return nil
   end
+
 end
