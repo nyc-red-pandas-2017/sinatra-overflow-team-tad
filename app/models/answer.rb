@@ -1,6 +1,6 @@
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
   belongs_to :user
-  has_many :answers
+  belongs_to :question
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
 end
