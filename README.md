@@ -4,7 +4,7 @@
 Thierry, Andreas L, David
 
 ## User Stories
-
+MVP: User can create a question. User will able to vote on a question. A logged in user will be able to comment or respond to a question.
 
 ## Summary
 
