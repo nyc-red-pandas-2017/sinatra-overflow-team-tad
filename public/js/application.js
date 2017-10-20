@@ -10,7 +10,7 @@ $(document).ready(function() {
     })
 
   $("#hide-form").on("click", function(event){
-    event.preventDefault();
+      event.preventDefault();
       $("#submit-new-question-container").hide();
     })
 
@@ -34,5 +34,17 @@ $(document).ready(function() {
     });
 
   })
+
+  $(".list").on("click", ".new-answer", function(event) {
+    event.preventDefault();
+    var $obj = $(this);
+    $obj.parent().next().show();
+  })
+
+  $(".list").on("click", ".hide-answer-form", function(event) {
+      event.preventDefault();
+      var $obj = $(this);
+      $obj.parent().hide();
+    })
 
 });

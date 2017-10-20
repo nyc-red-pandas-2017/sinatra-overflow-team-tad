@@ -3,3 +3,11 @@
           Votes: <span class="votes-container">0</span> |
           <!-- End vote count --><%= @question.question_text %>| <b>by: </b>
           <!-- End vote count --><%= @current_user.first_name %> | <a href="#">comment</a> | <a href="#">answer</a> | <%= @question.created_at %> </li>
+<div class="submit-new-answer-container" style="display: none">
+  Give your answer below, or <a class="hide-answer-form" action="/answers" method="get" href="/answers"> hide this form</a>
+  <form id="submit-new-answer" action="/answers" method="get">
+  <textarea name="answer[answer_text]" rows="5"></textarea><br>
+  <input type="submit" value="Submit">
+</form>
+<br>
+</div>
