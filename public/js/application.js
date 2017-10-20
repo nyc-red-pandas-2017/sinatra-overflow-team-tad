@@ -4,21 +4,35 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-  // $("#div-form").on("click", "#new-question", function(event){
-  //   event.preventDefault();
 
-  //   var $obj = $(this);
-  //   var url = $obj.attr("action");
-  //   var method = $obj.attr("method");
+  $("#new-question").on("click", function(event){
+    event.preventDefault();
+      $("#submit-new-question-container").show();
+    })
 
-  //   $.ajax({
-  //     url: url,
-  //     method: method
-  //   })
+  $("#hide-form").on("click", function(event){
+    event.preventDefault();
+      $("#submit-new-question-container").hide();
+    })
 
-  //   .done(function(response){
-  //     $("ul").append(response);
-  //   })
+  $("#submit-new-question").on("submit", function(event) {
+    event.preventDefault();
 
-  // })
+    var $obj = $(this);
+    var url = $obj.attr("action");
+    var method = $obj.attr("method");
+    var data = $obj.serialize();
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+
+    .done(function(response){
+      $(".list").prepend(response)
+      //$("#submit-new-question textarea").html("")
+    });
+
+  })
 });
