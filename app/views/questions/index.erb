@@ -1,10 +1,25 @@
-<h1>Questions</h1>
+<h1>DBC Overflow Questions</h1>
 
-<a id="new-question" method="post" action="/questions" href="/questions">New question</a>
+<div id="new-question-form-container">
+<a id="new-question" href="/questions">Create a new question </a>
+</div>
+
 <br>
-<br>
-<ul>
-  <% @questions.each do |question| %>
-  <li><%= question.question_text %> | <a href="#">comment</a> | <a href="#">answer</a> | <%= question.created_at %> </li>
+<div id="submit-new-question-container" style="display: none">
+    Create your question below, or <a id="hide-form" href="/questions"> hide this form</a>
+    <form id="submit-new-question" action="/questions" method="post">
+    <textarea name="question[question_text]" rows="5"></textarea><br>
+    <input type="submit" value="Submit">
+  </form>
+  <br>
+</div>
+
+<ul class="list">
+  <% @questions.reverse.each do |question| %>
+  <li><!-- Vote count -->
+          <button formaction="/votes" formmethod="post" class="upvote" type="button">+1</button> | <button formaction="/votes" formmethod="post" class="downvote" type="button">-1</button> |
+          Votes: <span class="votes-container">0</span> |
+          <!-- End vote count --><%= question.question_text %> | <b>by: </b>
+          <!-- End vote count --><%= @users.find_by(id: question.user_id).first_name %> | <a href="#">comment</a> | <a href="#">answer</a> | <%= question.created_at %> </li>
   <% end %>
 </ul>
