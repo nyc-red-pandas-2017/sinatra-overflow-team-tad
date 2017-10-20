@@ -4,21 +4,21 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-  $("#new-question").on("click", function(event){
-    event.preventDefault();
+  // $("#div-form").on("click", "#new-question", function(event){
+  //   event.preventDefault();
 
-    var $obj = $(this);
-    var url = $obj.attr("action");
-    var method = $obj.attr("method");
+  //   var $obj = $(this);
+  //   var url = $obj.attr("action");
+  //   var method = $obj.attr("method");
 
-    $.ajax({
-      url: url,
-      method: method
-    })
+  //   $.ajax({
+  //     url: url,
+  //     method: method
+  //   })
 
-    .done(function(response){
-      $("#new-question").append(response);
-    })
+  //   .done(function(response){
+  //     $("ul").append(response);
+  //   })
 
-  })
+  // })
 });
