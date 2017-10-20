@@ -18,8 +18,8 @@
 <ul class="list">
   <% @questions.reverse.each do |question| %>
   <li><!-- Vote count -->
-          <button formaction="/votes" formmethod="post" class="upvote" type="button">+1</button> | <button formaction="/votes" formmethod="post" class="downvote" type="button">-1</button> |
-          Votes: <span class="votes-container">0</span> |
+          <button formaction="/questions/<%= @question.id %>/upvote" formmethod="post" class="upvote" type="button">+1</button> | <button formaction="/questions/<%= @question.id %>/downvote" formmethod="post" class="downvote" type="button">-1</button> |
+          <span class="votes-container">Votes: <%= @question.vote_sum %></span> |
           <!-- End vote count --><%= question.question_text %> | <b>by: </b>
           <!-- End vote count --><%= @users.find_by(id: question.user_id).first_name %> | <a href="/comments">comment</a> | <a href="#">answer</a> | <a href="/questions/<%=question.id %>">details</a> | <%= question.created_at %> </li>
   <% end %>

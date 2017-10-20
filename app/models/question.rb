@@ -6,4 +6,11 @@ class Question < ApplicationRecord
   # Remember to create a migration!
   validates :question_text, presence: true
 
+   def vote_sum
+    total = 0
+    votes.each do |vote|
+      total += vote.vote
+    end
+    return total
+  end
 end
