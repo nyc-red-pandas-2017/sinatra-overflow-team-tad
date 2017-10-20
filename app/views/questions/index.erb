@@ -1,10 +1,22 @@
-<h1>Questions</h1>
+<h1>DBC Overflow Questions</h1>
 
-<a id="new-question" method="post" action="/questions" href="/questions">New question</a>
+<div id="new-question-form-container">
+<a id="new-question" method="get" action="/questions/new" href="/questions/new">Create a new question </a> | <a id="hide-form">Hide form</a>
+</div>
+
 <br>
+<form id="submit-new-question" action="/questions" method="post">
+  <textarea name="question[question_text]" rows="5"></textarea><br>
+  <input type="submit" value="Submit">
+</form>
+<br>
+
 <br>
 <ul>
   <% @questions.each do |question| %>
-  <li><%= question.question_text %> | <a href="#">comment</a> | <a href="#">answer</a> | <%= question.created_at %> </li>
+  <li><!-- Vote count -->
+          <button formaction="/votes" formmethod="post" class="upvote" type="button">+1</button> | <button formaction="/votes" formmethod="post" class="downvote" type="button">-1</button> |
+          Votes: <span class="votes-container">0</span> |
+          <!-- End vote count --><%= question.question_text %> | <a href="#">comment</a> | <a href="#">answer</a> | <%= question.created_at %> </li>
   <% end %>
 </ul>
