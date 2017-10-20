@@ -6,7 +6,7 @@ end
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
   redirect '/' unless @user.id = session[:user_id]
-  erb :'sessions/login'
+  erb :'sessions/new'
 end
 
 post '/users' do

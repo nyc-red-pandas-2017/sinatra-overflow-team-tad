@@ -23,8 +23,14 @@ get '/questions/:id' do
 end
 
 get '/questions/:id/edit' do
-  @question = Question.find(params[:id])
-  erb :'questions/edit'
+  @user = User.find_by(id: session[:user_id])
+
+  @question = Question.find_by(id: params[:id], user_id: @user.id)
+  if @question
+    erb :'questions/edit'
+  else
+    "Not Today, Phil!"
+  end
 end
 
 put '/questions/:id' do
@@ -37,8 +43,22 @@ put '/questions/:id' do
   end
 end
 
+post '/questions/:id/vote' do
+  questions = Question.find(params[:id])
+  questions.votes.create(up_down_vote: 1)
+  redirect "/questions"
+
+end
+
 delete '/questions/:id' do
-  @question = Question.find(params[:id]) #define question to delete
-  @question.destroy #delete question
-  redirect '/questions' #redirect back to questions index page
+@user = User.find_by(id: session[:user_id])
+@question = Question.find_by(id: params[:id], user_id: @user.id)
+  if @question
+  @question.destroy
+  redirect '/questions'
+  else
+    "Not Today, Pan!"
+  end
+
+
 end
