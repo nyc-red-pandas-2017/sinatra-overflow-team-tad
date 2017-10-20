@@ -30,6 +30,7 @@ $(document).ready(function() {
 
     .done(function(response){
       $(".list").prepend(response)
+      //$("#submit-new-question textarea").html("")
     });
 
   })
