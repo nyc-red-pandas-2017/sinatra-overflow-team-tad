@@ -1,5 +1,6 @@
 User.delete_all
 Question.delete_all
+User.delete_all
 
 require 'faker'
 
@@ -13,3 +14,7 @@ require 'faker'
   question = Question.new(question_text: Faker::Lorem.sentence, user_id: user.id)
   question.save
 end
+
+david = User.create!(first_name: "david", last_name: "skaggs",
+                    username: "david", email: "test@test.com",
+                    password: "test")

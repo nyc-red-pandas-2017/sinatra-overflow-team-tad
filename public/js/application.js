@@ -4,6 +4,7 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
   $("#new-question").on("click", function(event){
     event.preventDefault();
       $("#submit-new-question-container").show();
@@ -34,5 +35,4 @@ $(document).ready(function() {
     });
 
   })
-
 });
