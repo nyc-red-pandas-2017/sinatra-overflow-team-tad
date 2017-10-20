@@ -15,7 +15,7 @@ $(document).ready(function() {
       $("#submit-new-question-container").hide();
     })
 
-  $("#submit-new-question").on("submit", function(event) {
+  $("#submit-new-question-container").on("submit", "#submit-new-question", function(event) {
     event.preventDefault();
 
     var $obj = $(this);
