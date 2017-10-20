@@ -37,6 +37,13 @@ put '/questions/:id' do
   end
 end
 
+post '/questions/:id/vote' do
+  questions = Question.find(params[:id])
+  questions.votes.create(up_down_vote: 1)
+  redirect "/questions"
+
+end
+
 delete '/questions/:id' do
   @question = Question.find(params[:id]) #define question to delete
   @question.destroy #delete question
